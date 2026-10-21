@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10다온 YT 전용 사이트</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header / Hero Section -->
+    <div class="relative overflow-hidden bg-gradient-to-b from-indigo-900/40 via-slate-900 to-slate-900 pt-12 pb-8 px-4 text-center">
+        <!-- Background Glowing Effect -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-xl mx-auto relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-3 border border-indigo-500/20">
+                Youth Ministry Community
+            </span>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-3 drop-shadow-md">
+                10다온 <span class="text-indigo-400">YT</span> 전용 사이트
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base">
+                함께 나누는 기도, 하나님의 말씀, 그리고 즐거운 퀴즈가 있는 공간입니다.
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigation / Quick Menu Buttons Section -->
+    <main class="max-w-xl mx-auto w-full px-4 mb-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+            <!-- 기도제목 버튼 -->
+            <button onclick="switchTab('prayer')" id="btn-prayer" class="group relative flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-300 shadow-lg active:scale-95">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-hands-praying text-xl"></i>
+                </div>
+                <span class="font-bold text-base text-slate-200 group-hover:text-amber-400 transition-colors">기도제목</span>
+                <span class="text-xs text-slate-400 mt-1">서로를 위한 기도</span>
+            </button>
+
+            <!-- YT 말씀 버튼 -->
+            <button onclick="switchTab('word')" id="btn-word" class="group relative flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-300 shadow-lg active:scale-95">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-book-open text-xl"></i>
+                </div>
+                <span class="font-bold text-base text-slate-200 group-hover:text-indigo-400 transition-colors">YT 말씀</span>
+                <span class="text-xs text-slate-400 mt-1">주일 말씀 다시보기</span>
+            </button>
+
+            <!-- YT 퀴즈 버튼 -->
+            <button onclick="switchTab('quiz')" id="btn-quiz" class="group relative flex flex-col items-center justify-center p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-300 shadow-lg active:scale-95">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-gamepad text-xl"></i>
+                </div>
+                <span class="font-bold text-base text-slate-200 group-hover:text-emerald-400 transition-colors">YT 퀴즈</span>
+                <span class="text-xs text-slate-400 mt-1">재미있는 성경 퀴즈</span>
+            </button>
+        </div>
+
+        <!-- Content Display Area -->
+        <div class="bg-slate-800/50 rounded-2xl border border-slate-700/50 p-6 backdrop-blur-sm shadow-xl min-h-[300px] mb-8">
+            <!-- 기도제목 컨텐츠 -->
+            <div id="content-prayer" class="tab-content hidden space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-700/60">
+                    <h2 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-hands-praying"></i> 기도제목 나눠요
+                    </h2>
+                    <span class="text-xs text-slate-400">함께 기도합시다</span>
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/30">
+                        <div class="flex justify-between text-xs text-slate-400 mb-1">
+                            <span class="font-semibold text-slate-300">공통 기도제목</span>
+                            <span>2026.10</span>
+                        </div>
+                        <p class="text-sm text-slate-200 leading-relaxed">10다온 공동체가 하나님의 사랑 안에서 날마다 새롭게 성장하고 서로를 깊이 사랑하게 하소서.</p>
+                    </div>
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/30">
+                        <div class="flex justify-between text-xs text-slate-400 mb-1">
+                            <span class="font-semibold text-slate-300">시험/학업을 위한 기도</span>
+                            <span>진로 및 비전</span>
+                        </div>
+                        <p class="text-sm text-slate-200 leading-relaxed">우리 모든 YT 지체들에게 지혜와 평안을 주시고, 준비하는 모든 과정 가운데 주님의 인도하심을 경험하게 하소서.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YT 말씀 컨텐츠 -->
+            <div id="content-word" class="tab-content hidden space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-700/60">
+                    <h2 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> 이번 주 YT 말씀
+                    </h2>
+                    <span class="text-xs text-indigo-300 bg-indigo-500/10 px-2 py-1 rounded">이번 주 메세지</span>
+                </div>
+                <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-700/30 text-center space-y-3">
+                    <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Weekly Bible Message</span>
+                    <h3 class="text-xl font-bold text-white">"믿음으로 나아가는 삶"</h3>
+                    <p class="text-sm text-slate-300 italic">히브리서 11:1-3</p>
+                    <p class="text-sm text-slate-400 leading-relaxed pt-2 border-t border-slate-800">
+                        보이지 않는 상황 속에서도 하나님을 전적으로 신뢰하고 나아갈 때, 주님께서 우리의 삶에 펼쳐주실 경이로운 역사들을 기대합니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- YT 퀴즈 컨텐츠 -->
+            <div id="content-quiz" class="tab-content hidden space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-700/60">
+                    <h2 class="text-lg font-bold text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad"></i> Today's YT 퀴즈
+                    </h2>
+                    <span class="text-xs text-emerald-300 bg-emerald-500/10 px-2 py-1 rounded">Daily Quiz</span>
+                </div>
+                <div id="quiz-container" class="bg-slate-900/60 p-5 rounded-xl border border-slate-700/30 space-y-4">
+                    <p class="text-sm font-semibold text-slate-200">Q. 성경의 히브리서 11장은 흔히 어떤 장으로 불릴까요?</p>
+                    <div class="grid grid-cols-1 gap-2 text-sm">
+                        <button onclick="checkAnswer(false, this)" class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition border border-slate-700/50 text-slate-300">1. 사랑장</button>
+                        <button onclick="checkAnswer(true, this)" class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition border border-slate-700/50 text-slate-300">2. 믿음장</button>
+                        <button onclick="checkAnswer(false, this)" class="w-full text-left p-3 rounded-lg bg-slate-800 hover:bg-slate-700 transition border border-slate-700/50 text-slate-300">3. 소망장</button>
+                    </div>
+                    <div id="quiz-result" class="hidden p-3 rounded-lg text-center font-bold text-sm"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 border-t border-slate-800 text-slate-500 text-xs">
+        <p>© 10다온 YT Ministry. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // 탭 전환 함수
+        function switchTab(tabName) {
+            // 모든 컨텐츠 숨기기
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // 모든 버튼 스타일 초기화
+            const buttons = document.querySelectorAll('main grid button');
+            
+            // 선택한 탭 보이기
+            const activeContent = document.getElementById(`content-${tabName}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+        }
+
+        // 퀴즈 정답 확인 함수
+        function checkAnswer(isCorrect, element) {
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden', 'bg-emerald-500/20', 'text-emerald-400', 'bg-rose-500/20', 'text-rose-400');
+
+            if (isCorrect) {
+                resultBox.classList.add('bg-emerald-500/20', 'text-emerald-400');
+                resultBox.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> 정답입니다! 히브리서 11장은 믿음장입니다. 🎉';
+            } else {
+                resultBox.classList.add('bg-rose-500/20', 'text-rose-400');
+                resultBox.innerHTML = '<i class="fa-solid fa-circle-xmark mr-1"></i> 아쉽네요! 다시 시도해보세요. 💡';
+            }
+        }
+
+        // 초기 실행: 기본으로 '기도제목' 탭 활성화
+        window.onload = function() {
+            switchTab('prayer');
+        };
+    </script>
+</body>
+</html>
